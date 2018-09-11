@@ -10,10 +10,9 @@ return [
     | This value is the name of your application. This value is used when the
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
-    |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => 'CDB',
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +21,7 @@ return [
     |
     | This value determines the "environment" your application is currently
     | running in. This may determine how you prefer to configure various
-    | services the application utilizes. Set this in your ".env" file.
+    | services your application utilizes. Set this in your ".env" file.
     |
     */
 
@@ -68,6 +67,22 @@ return [
     'timezone' => 'UTC',
 
     /*
+     |--------------------------------------------------------------------------
+     | Application Date Format
+     |--------------------------------------------------------------------------
+     |
+     | Here you may specify the default date format for your application, which
+     | will be used with date and date-time functions.
+     |
+     */
+
+    'date_format' => 'm/d/Y',
+    'date_format_js' => 'mm/dd/yy',
+    'date_format_moment' => 'MM/DD/YYYY',
+    'time_format_moment' => 'HH:mm:ss',
+    'datetime_format_moment' => 'MM/DD/YYYY HH:mm:ss',
+
+    /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
@@ -107,6 +122,23 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Logging Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log settings for your application. Out of
+    | the box, Laravel uses the Monolog PHP logging library. This gives
+    | you a variety of powerful log handlers / formatters to utilize.
+    |
+    | Available Settings: "single", "daily", "syslog", "errorlog"
+    |
+    */
+
+    'log' => env('APP_LOG', 'single'),
+
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
 
     /*
     |--------------------------------------------------------------------------
@@ -150,7 +182,11 @@ return [
         /*
          * Package Service Providers...
          */
-
+        Laravel\Tinker\TinkerServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Unisharp\LaravelFilemanager\LaravelFilemanagerServiceProvider::class,
+        
         /*
          * Application Service Providers...
          */
@@ -209,6 +245,15 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * Package Aliases
+         */
+        'Image'        => Intervention\Image\Facades\Image::class,
+        'Form'         => Collective\Html\FormFacade::class,
+        'Html'         => Collective\Html\HtmlFacade::class,
+        
     ],
+
+    
 
 ];

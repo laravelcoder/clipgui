@@ -1,30 +1,49 @@
 <?php
-
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Notifications\ResetPassword;
+use Hash;
 
+/**
+ * Class User
+ *
+ * @package App
+ * @property string $name
+ * @property string $email
+ * @property string $password
+ * @property string $remember_token
+*/
 class User extends Authenticatable
 {
     use Notifiable;
-
+    protected $fillable = ['name', 'email', 'password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token'];
+    
+    
+    
     /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
+     * Hash password
+     * @param $input
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    public function setPasswordAttribute($input)
+    {
+        if ($input)
+            $this->attributes['password'] = app('hash')->needsRehash($input) ? Hash::make($input) : $input;
+    }
+    
+    
+    public function role()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+    
+    
+    
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    public function sendPasswordResetNotification($token)
+    {
+       $this->notify(new ResetPassword($token));
+    }
 }

@@ -1,18 +1,15 @@
 <?php
 
-use Illuminate\Http\Request;
+Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1', 'as' => 'api.'], function () {
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+        Route::resource('clips', 'ClipsController', ['except' => ['create', 'edit']]);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+        Route::resource('clip_filters', 'ClipFiltersController', ['except' => ['create', 'edit']]);
+
+        Route::resource('brands', 'BrandsController', ['except' => ['create', 'edit']]);
+
+        Route::resource('products', 'ProductsController', ['except' => ['create', 'edit']]);
+
+        Route::resource('industries', 'IndustriesController', ['except' => ['create', 'edit']]);
+
 });
