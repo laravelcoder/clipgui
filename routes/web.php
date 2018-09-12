@@ -23,15 +23,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('clips_mass_destroy', ['uses' => 'Admin\ClipsController@massDestroy', 'as' => 'clips.mass_destroy']);
     Route::post('clips_restore/{id}', ['uses' => 'Admin\ClipsController@restore', 'as' => 'clips.restore']);
     Route::delete('clips_perma_del/{id}', ['uses' => 'Admin\ClipsController@perma_del', 'as' => 'clips.perma_del']);
-    Route::resource('permissions', 'Admin\PermissionsController');
-    Route::post('permissions_mass_destroy', ['uses' => 'Admin\PermissionsController@massDestroy', 'as' => 'permissions.mass_destroy']);
-    Route::resource('roles', 'Admin\RolesController');
-    Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
-    Route::resource('users', 'Admin\UsersController');
-    Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
     Route::resource('galleries', 'Admin\GalleriesController');
     Route::resource('single_channels', 'Admin\SingleChannelsController');
     Route::resource('multi_channels', 'Admin\MultiChannelsController');
+    Route::resource('all_channels', 'Admin\AllChannelsController');
     Route::resource('clip_filters', 'Admin\ClipFiltersController');
     Route::post('clip_filters_mass_destroy', ['uses' => 'Admin\ClipFiltersController@massDestroy', 'as' => 'clip_filters.mass_destroy']);
     Route::post('clip_filters_restore/{id}', ['uses' => 'Admin\ClipFiltersController@restore', 'as' => 'clip_filters.restore']);
@@ -61,7 +56,16 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::resource('dedups', 'Admin\DedupsController');
     Route::resource('redistributions', 'Admin\RedistributionsController');
     Route::resource('auto_group_detections', 'Admin\AutoGroupDetectionsController');
-    Route::resource('all_channels', 'Admin\AllChannelsController');
+    Route::resource('permissions', 'Admin\PermissionsController');
+    Route::post('permissions_mass_destroy', ['uses' => 'Admin\PermissionsController@massDestroy', 'as' => 'permissions.mass_destroy']);
+    Route::resource('roles', 'Admin\RolesController');
+    Route::post('roles_mass_destroy', ['uses' => 'Admin\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
+    Route::resource('users', 'Admin\UsersController');
+    Route::post('users_mass_destroy', ['uses' => 'Admin\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
+    Route::resource('ftps', 'Admin\FtpsController');
+    Route::post('ftps_mass_destroy', ['uses' => 'Admin\FtpsController@massDestroy', 'as' => 'ftps.mass_destroy']);
+    Route::post('ftps_restore/{id}', ['uses' => 'Admin\FtpsController@restore', 'as' => 'ftps.restore']);
+    Route::delete('ftps_perma_del/{id}', ['uses' => 'Admin\FtpsController@perma_del', 'as' => 'ftps.perma_del']);
 
 
 

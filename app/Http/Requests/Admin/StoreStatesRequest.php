@@ -23,7 +23,6 @@ class StoreStatesRequest extends FormRequest
     public function rules()
     {
         return [
-            'clips.*' => 'exists:clips,id',
         ];
     }
 }

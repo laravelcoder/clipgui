@@ -16,6 +16,18 @@ class UserSeedPivot extends Seeder
             1 => [
                 'role' => [1],
             ],
+            2 => [
+                'role' => [1],
+            ],
+            3 => [
+                'role' => [1],
+            ],
+            4 => [
+                'role' => [1],
+            ],
+            5 => [
+                'role' => [1],
+            ],
 
         ];
 

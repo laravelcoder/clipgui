@@ -20,9 +20,4 @@ class State extends Model
     
     
     
-    public function clips()
-    {
-        return $this->belongsToMany(Clip::class, 'clip_state')->withTrashed();
-    }
-    
 }

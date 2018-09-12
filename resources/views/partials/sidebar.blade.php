@@ -80,6 +80,27 @@
                 </ul>
             </li>@endcan
             
+            @can('sources_mgmt_access')
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-gears"></i>
+                    <span>@lang('global.sources-mgmt.title')</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    @can('ftp_access')
+                    <li>
+                        <a href="{{ route('admin.ftps.index') }}">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('global.ftp.title')</span>
+                        </a>
+                    </li>@endcan
+                    
+                </ul>
+            </li>@endcan
+            
             @can('default_access')
             <li class="treeview">
                 <a href="#">

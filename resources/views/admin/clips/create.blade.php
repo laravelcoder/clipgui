@@ -36,18 +36,6 @@
             </div>
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('notes', trans('global.clips.fields.notes').'', ['class' => 'control-label']) !!}
-                    {!! Form::textarea('notes', old('notes'), ['class' => 'form-control ', 'placeholder' => '']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('notes'))
-                        <p class="help-block">
-                            {{ $errors->first('notes') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
                     {!! Form::label('clip_upload', trans('global.clips.fields.clip-upload').'', ['class' => 'control-label']) !!}
                     {!! Form::hidden('clip_upload', old('clip_upload')) !!}
                     {!! Form::file('clip_upload', ['class' => 'form-control']) !!}
@@ -80,6 +68,42 @@
                     @if($errors->has('brand_id'))
                         <p class="help-block">
                             {{ $errors->first('brand_id') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('states_id', trans('global.clips.fields.states').'', ['class' => 'control-label']) !!}
+                    {!! Form::select('states_id', $states, old('states_id'), ['class' => 'form-control select2']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('states_id'))
+                        <p class="help-block">
+                            {{ $errors->first('states_id') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('products_id', trans('global.clips.fields.products').'', ['class' => 'control-label']) !!}
+                    {!! Form::select('products_id', $products, old('products_id'), ['class' => 'form-control select2']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('products_id'))
+                        <p class="help-block">
+                            {{ $errors->first('products_id') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('notes', trans('global.clips.fields.notes').'', ['class' => 'control-label']) !!}
+                    {!! Form::textarea('notes', old('notes'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('notes'))
+                        <p class="help-block">
+                            {{ $errors->first('notes') }}
                         </p>
                     @endif
                 </div>

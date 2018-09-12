@@ -21,10 +21,6 @@
                             <td field-key='description'>{!! $clip->description !!}</td>
                         </tr>
                         <tr>
-                            <th>@lang('global.clips.fields.notes')</th>
-                            <td field-key='notes'>{!! $clip->notes !!}</td>
-                        </tr>
-                        <tr>
                             <th>@lang('global.clips.fields.clip-upload')</th>
                             <td field-key='clip_upload'>@if($clip->clip_upload)<a href="{{ asset(env('UPLOAD_PATH').'/' . $clip->clip_upload) }}" target="_blank">Download file</a>@endif</td>
                         </tr>
@@ -35,6 +31,18 @@
                         <tr>
                             <th>@lang('global.clips.fields.brand')</th>
                             <td field-key='brand'>{{ $clip->brand->name or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('global.clips.fields.states')</th>
+                            <td field-key='states'>{{ $clip->states->state or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('global.clips.fields.products')</th>
+                            <td field-key='products'>{{ $clip->products->name or '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>@lang('global.clips.fields.notes')</th>
+                            <td field-key='notes'>{!! $clip->notes !!}</td>
                         </tr>
                     </table>
                 </div>

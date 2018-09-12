@@ -34,24 +34,6 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('clips', trans('global.products.fields.clips').'', ['class' => 'control-label']) !!}
-                    <button type="button" class="btn btn-primary btn-xs" id="selectbtn-clips">
-                        {{ trans('global.app_select_all') }}
-                    </button>
-                    <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-clips">
-                        {{ trans('global.app_deselect_all') }}
-                    </button>
-                    {!! Form::select('clips[]', $clips, old('clips'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'selectall-clips' ]) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('clips'))
-                        <p class="help-block">
-                            {{ $errors->first('clips') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
             
         </div>
     </div>
@@ -60,17 +42,3 @@
     {!! Form::close() !!}
 @stop
 
-@section('javascript')
-    @parent
-
-    <script>
-        $("#selectbtn-clips").click(function(){
-            $("#selectall-clips > option").prop("selected","selected");
-            $("#selectall-clips").trigger("change");
-        });
-        $("#deselectbtn-clips").click(function(){
-            $("#selectall-clips > option").prop("selected","");
-            $("#selectall-clips").trigger("change");
-        });
-    </script>
-@stop

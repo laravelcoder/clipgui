@@ -33,7 +33,6 @@
 
                         <th>@lang('global.states.fields.state')</th>
                         <th>@lang('global.states.fields.slug')</th>
-                        <th>@lang('global.states.fields.clips')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -52,11 +51,6 @@
 
                                 <td field-key='state'>{{ $state->state }}</td>
                                 <td field-key='slug'>{{ $state->slug }}</td>
-                                <td field-key='clips'>
-                                    @foreach ($state->clips as $singleClips)
-                                        <span class="label label-info label-many">{{ $singleClips->label }}</span>
-                                    @endforeach
-                                </td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     {!! Form::open(array(
@@ -97,7 +91,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="8">@lang('global.app_no_entries_in_table')</td>
+                            <td colspan="7">@lang('global.app_no_entries_in_table')</td>
                         </tr>
                     @endif
                 </tbody>

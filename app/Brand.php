@@ -20,9 +20,4 @@ class Brand extends Model
     
     
     
-    public function clips()
-    {
-        return $this->belongsToMany(Clip::class, 'brand_clip')->withTrashed();
-    }
-    
 }

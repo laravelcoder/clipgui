@@ -45,11 +45,7 @@ class ProductsController extends Controller
         if (! Gate::allows('product_create')) {
             return abort(401);
         }
-        
-        $clips = \App\Clip::get()->pluck('label', 'id');
-
-
-        return view('admin.products.create', compact('clips'));
+        return view('admin.products.create');
     }
 
     /**
@@ -64,7 +60,6 @@ class ProductsController extends Controller
             return abort(401);
         }
         $product = Product::create($request->all());
-        $product->clips()->sync(array_filter((array)$request->input('clips')));
 
 
 
@@ -83,13 +78,9 @@ class ProductsController extends Controller
         if (! Gate::allows('product_edit')) {
             return abort(401);
         }
-        
-        $clips = \App\Clip::get()->pluck('label', 'id');
-
-
         $product = Product::findOrFail($id);
 
-        return view('admin.products.edit', compact('product', 'clips'));
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -106,7 +97,6 @@ class ProductsController extends Controller
         }
         $product = Product::findOrFail($id);
         $product->update($request->all());
-        $product->clips()->sync(array_filter((array)$request->input('clips')));
 
 
 
@@ -125,9 +115,11 @@ class ProductsController extends Controller
         if (! Gate::allows('product_view')) {
             return abort(401);
         }
+        $clips = \App\Clip::where('products_id', $id)->get();
+
         $product = Product::findOrFail($id);
 
-        return view('admin.products.show', compact('product'));
+        return view('admin.products.show', compact('product', 'clips'));
     }
 
 

@@ -45,11 +45,7 @@ class BrandsController extends Controller
         if (! Gate::allows('brand_create')) {
             return abort(401);
         }
-        
-        $clips = \App\Clip::get()->pluck('label', 'id');
-
-
-        return view('admin.brands.create', compact('clips'));
+        return view('admin.brands.create');
     }
 
     /**
@@ -64,7 +60,6 @@ class BrandsController extends Controller
             return abort(401);
         }
         $brand = Brand::create($request->all());
-        $brand->clips()->sync(array_filter((array)$request->input('clips')));
 
 
 
@@ -83,13 +78,9 @@ class BrandsController extends Controller
         if (! Gate::allows('brand_edit')) {
             return abort(401);
         }
-        
-        $clips = \App\Clip::get()->pluck('label', 'id');
-
-
         $brand = Brand::findOrFail($id);
 
-        return view('admin.brands.edit', compact('brand', 'clips'));
+        return view('admin.brands.edit', compact('brand'));
     }
 
     /**
@@ -106,7 +97,6 @@ class BrandsController extends Controller
         }
         $brand = Brand::findOrFail($id);
         $brand->update($request->all());
-        $brand->clips()->sync(array_filter((array)$request->input('clips')));
 
 
 
@@ -125,9 +115,7 @@ class BrandsController extends Controller
         if (! Gate::allows('brand_view')) {
             return abort(401);
         }
-        
-        $clips = \App\Clip::get()->pluck('label', 'id');
-$clips = \App\Clip::where('brand_id', $id)->get();
+        $clips = \App\Clip::where('brand_id', $id)->get();
 
         $brand = Brand::findOrFail($id);
 

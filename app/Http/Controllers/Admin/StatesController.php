@@ -45,11 +45,7 @@ class StatesController extends Controller
         if (! Gate::allows('state_create')) {
             return abort(401);
         }
-        
-        $clips = \App\Clip::get()->pluck('label', 'id');
-
-
-        return view('admin.states.create', compact('clips'));
+        return view('admin.states.create');
     }
 
     /**
@@ -64,7 +60,6 @@ class StatesController extends Controller
             return abort(401);
         }
         $state = State::create($request->all());
-        $state->clips()->sync(array_filter((array)$request->input('clips')));
 
 
 
@@ -83,13 +78,9 @@ class StatesController extends Controller
         if (! Gate::allows('state_edit')) {
             return abort(401);
         }
-        
-        $clips = \App\Clip::get()->pluck('label', 'id');
-
-
         $state = State::findOrFail($id);
 
-        return view('admin.states.edit', compact('state', 'clips'));
+        return view('admin.states.edit', compact('state'));
     }
 
     /**
@@ -106,7 +97,6 @@ class StatesController extends Controller
         }
         $state = State::findOrFail($id);
         $state->update($request->all());
-        $state->clips()->sync(array_filter((array)$request->input('clips')));
 
 
 
@@ -125,9 +115,11 @@ class StatesController extends Controller
         if (! Gate::allows('state_view')) {
             return abort(401);
         }
+        $clips = \App\Clip::where('states_id', $id)->get();
+
         $state = State::findOrFail($id);
 
-        return view('admin.states.show', compact('state'));
+        return view('admin.states.show', compact('state', 'clips'));
     }
 
 

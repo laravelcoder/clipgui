@@ -76,6 +76,12 @@ class PermissionSeed extends Seeder
             ['id' => 71, 'title' => 'redistribution_access',],
             ['id' => 72, 'title' => 'auto_group_detection_access',],
             ['id' => 73, 'title' => 'all_channel_access',],
+            ['id' => 74, 'title' => 'sources_mgmt_access',],
+            ['id' => 75, 'title' => 'ftp_access',],
+            ['id' => 76, 'title' => 'ftp_create',],
+            ['id' => 77, 'title' => 'ftp_edit',],
+            ['id' => 78, 'title' => 'ftp_view',],
+            ['id' => 79, 'title' => 'ftp_delete',],
 
         ];
 

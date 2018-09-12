@@ -24,7 +24,6 @@ class UpdateProductsRequest extends FormRequest
     {
         return [
             
-            'clips.*' => 'exists:clips,id',
         ];
     }
 }

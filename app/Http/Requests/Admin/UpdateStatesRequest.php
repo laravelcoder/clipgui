@@ -24,7 +24,6 @@ class UpdateStatesRequest extends FormRequest
     {
         return [
             
-            'clips.*' => 'exists:clips,id',
         ];
     }
 }

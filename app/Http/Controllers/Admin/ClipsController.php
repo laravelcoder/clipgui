@@ -51,8 +51,10 @@ class ClipsController extends Controller
         
         $industries = \App\Industry::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $brands = \App\Brand::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $states = \App\State::get()->pluck('state', 'id')->prepend(trans('global.app_please_select'), '');
+        $products = \App\Product::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
-        return view('admin.clips.create', compact('industries', 'brands'));
+        return view('admin.clips.create', compact('industries', 'brands', 'states', 'products'));
     }
 
     /**
@@ -89,10 +91,12 @@ class ClipsController extends Controller
         
         $industries = \App\Industry::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $brands = \App\Brand::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $states = \App\State::get()->pluck('state', 'id')->prepend(trans('global.app_please_select'), '');
+        $products = \App\Product::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
 
         $clip = Clip::findOrFail($id);
 
-        return view('admin.clips.edit', compact('clip', 'industries', 'brands'));
+        return view('admin.clips.edit', compact('clip', 'industries', 'brands', 'states', 'products'));
     }
 
     /**
@@ -130,7 +134,9 @@ class ClipsController extends Controller
         }
         
         $industries = \App\Industry::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
-        $brands = \App\Brand::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$clip_filters = \App\ClipFilter::where('filters_id', $id)->get();$states = \App\State::whereHas('clips',
+        $brands = \App\Brand::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $states = \App\State::get()->pluck('state', 'id')->prepend(trans('global.app_please_select'), '');
+        $products = \App\Product::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$clip_filters = \App\ClipFilter::where('filters_id', $id)->get();$states = \App\State::whereHas('clips',
                     function ($query) use ($id) {
                         $query->where('id', $id);
                     })->get();$brands = \App\Brand::whereHas('clips',

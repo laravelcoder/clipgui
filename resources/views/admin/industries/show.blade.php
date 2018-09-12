@@ -36,8 +36,6 @@
     <thead>
         <tr>
             <th>@lang('global.clips.fields.label')</th>
-                        <th>@lang('global.clips.fields.industry')</th>
-                        <th>@lang('global.clips.fields.brand')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -51,8 +49,6 @@
             @foreach ($clips as $clip)
                 <tr data-entry-id="{{ $clip->id }}">
                     <td field-key='label'>{{ $clip->label }}</td>
-                                <td field-key='industry'>{{ $clip->industry->name or '' }}</td>
-                                <td field-key='brand'>{{ $clip->brand->name or '' }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     {!! Form::open(array(
@@ -93,7 +89,7 @@
             @endforeach
         @else
             <tr>
-                <td colspan="11">@lang('global.app_no_entries_in_table')</td>
+                <td colspan="13">@lang('global.app_no_entries_in_table')</td>
             </tr>
         @endif
     </tbody>

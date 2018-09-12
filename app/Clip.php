@@ -10,16 +10,18 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @package App
  * @property string $label
  * @property text $description
- * @property text $notes
  * @property string $clip_upload
  * @property string $industry
  * @property string $brand
+ * @property string $states
+ * @property string $products
+ * @property text $notes
 */
 class Clip extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['label', 'description', 'notes', 'clip_upload', 'industry_id', 'brand_id'];
+    protected $fillable = ['label', 'description', 'clip_upload', 'notes', 'industry_id', 'brand_id', 'states_id', 'products_id'];
     protected $hidden = [];
     
     
@@ -41,6 +43,24 @@ class Clip extends Model
     {
         $this->attributes['brand_id'] = $input ? $input : null;
     }
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setStatesIdAttribute($input)
+    {
+        $this->attributes['states_id'] = $input ? $input : null;
+    }
+
+    /**
+     * Set to null if empty
+     * @param $input
+     */
+    public function setProductsIdAttribute($input)
+    {
+        $this->attributes['products_id'] = $input ? $input : null;
+    }
     
     public function industry()
     {
@@ -50,6 +70,16 @@ class Clip extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class, 'brand_id')->withTrashed();
+    }
+    
+    public function states()
+    {
+        return $this->belongsTo(State::class, 'states_id')->withTrashed();
+    }
+    
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'products_id')->withTrashed();
     }
     
 }
