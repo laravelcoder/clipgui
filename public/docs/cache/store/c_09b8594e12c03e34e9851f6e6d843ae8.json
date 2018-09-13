@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Admin",
     "file": "\/home\/vagrant\/repos\/clipgui\/app\/Http\/Controllers\/Admin\/IndustriesController.php",
     "relative_file": null,
-    "hash": "316fb7bcd3f7d80256f063f8251f4afad8b97df0",
+    "hash": "15ffec1f993e147e69715c1bd6e89abb10b0b70e",
     "parent": "App\\Http\\Controllers\\Controller",
     "modifiers": 0,
     "is_trait": false,

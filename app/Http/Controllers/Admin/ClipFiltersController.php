@@ -45,10 +45,7 @@ class ClipFiltersController extends Controller
         if (! Gate::allows('clip_filter_create')) {
             return abort(401);
         }
-        
-        $filters = \App\Clip::get()->pluck('label', 'id')->prepend(trans('global.app_please_select'), '');
-
-        return view('admin.clip_filters.create', compact('filters'));
+        return view('admin.clip_filters.create');
     }
 
     /**
@@ -81,12 +78,9 @@ class ClipFiltersController extends Controller
         if (! Gate::allows('clip_filter_edit')) {
             return abort(401);
         }
-        
-        $filters = \App\Clip::get()->pluck('label', 'id')->prepend(trans('global.app_please_select'), '');
-
         $clip_filter = ClipFilter::findOrFail($id);
 
-        return view('admin.clip_filters.edit', compact('clip_filter', 'filters'));
+        return view('admin.clip_filters.edit', compact('clip_filter'));
     }
 
     /**

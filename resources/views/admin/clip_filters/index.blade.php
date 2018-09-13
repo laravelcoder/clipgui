@@ -32,7 +32,6 @@
                         @endcan
 
                         <th>@lang('global.clip-filters.fields.filter-by')</th>
-                        <th>@lang('global.clip-filters.fields.filters')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -50,7 +49,6 @@
                                 @endcan
 
                                 <td field-key='filter_by'>{{ $clip_filter->filter_by }}</td>
-                                <td field-key='filters'>{{ $clip_filter->filters->label or '' }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     {!! Form::open(array(
@@ -91,7 +89,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="7">@lang('global.app_no_entries_in_table')</td>
+                            <td colspan="6">@lang('global.app_no_entries_in_table')</td>
                         </tr>
                     @endif
                 </tbody>

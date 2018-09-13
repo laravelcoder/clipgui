@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Admin",
     "file": "\/home\/vagrant\/repos\/clipgui\/app\/Http\/Controllers\/Admin\/StatesController.php",
     "relative_file": null,
-    "hash": "caad6c09809fc3f6f59949320cc0860769b3f3b6",
+    "hash": "30f06ebb738737a41ffbd0bcdd3c8ac150b0cee5",
     "parent": "App\\Http\\Controllers\\Controller",
     "modifiers": 0,
     "is_trait": false,

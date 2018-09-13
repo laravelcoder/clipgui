@@ -115,11 +115,11 @@ class BrandsController extends Controller
         if (! Gate::allows('brand_view')) {
             return abort(401);
         }
-        $clips = \App\Clip::where('brand_id', $id)->get();
+        $videos = \App\Video::where('brand_id', $id)->get();$clips = \App\Clip::where('brand_id', $id)->get();
 
         $brand = Brand::findOrFail($id);
 
-        return view('admin.brands.show', compact('brand', 'clips'));
+        return view('admin.brands.show', compact('brand', 'videos', 'clips'));
     }
 
 

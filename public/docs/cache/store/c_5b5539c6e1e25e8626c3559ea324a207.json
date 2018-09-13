@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Admin",
     "file": "\/home\/vagrant\/repos\/clipgui\/app\/Http\/Controllers\/Admin\/ClipFiltersController.php",
     "relative_file": null,
-    "hash": "bf44a21e2545d538142330af66ab6110dd96d0c4",
+    "hash": "6ea4d2b3ff51e20d1280644603cc8f203696cde9",
     "parent": "App\\Http\\Controllers\\Controller",
     "modifiers": 0,
     "is_trait": false,
@@ -66,7 +66,7 @@
         },
         "store": {
             "name": "store",
-            "line": 60,
+            "line": 57,
             "short_desc": "Store a newly created ClipFilter in storage.",
             "long_desc": "",
             "hint": [
@@ -84,7 +84,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 60,
+                    "line": 57,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -104,8 +104,8 @@
                             "StoreClipFiltersRequest"
                         ],
                         "attributes": {
-                            "startLine": 60,
-                            "endLine": 60
+                            "startLine": 57,
+                            "endLine": 57
                         }
                     },
                     "default": null,
@@ -116,7 +116,7 @@
         },
         "edit": {
             "name": "edit",
-            "line": 79,
+            "line": 76,
             "short_desc": "Show the form for editing ClipFilter.",
             "long_desc": "",
             "hint": [
@@ -134,7 +134,7 @@
             "parameters": {
                 "id": {
                     "name": "id",
-                    "line": 79,
+                    "line": 76,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -153,7 +153,7 @@
         },
         "update": {
             "name": "update",
-            "line": 99,
+            "line": 93,
             "short_desc": "Update ClipFilter in storage.",
             "long_desc": "",
             "hint": [
@@ -171,7 +171,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 99,
+                    "line": 93,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -191,8 +191,8 @@
                             "UpdateClipFiltersRequest"
                         ],
                         "attributes": {
-                            "startLine": 99,
-                            "endLine": 99
+                            "startLine": 93,
+                            "endLine": 93
                         }
                     },
                     "default": null,
@@ -201,7 +201,7 @@
                 },
                 "id": {
                     "name": "id",
-                    "line": 99,
+                    "line": 93,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -220,7 +220,7 @@
         },
         "show": {
             "name": "show",
-            "line": 119,
+            "line": 113,
             "short_desc": "Display ClipFilter.",
             "long_desc": "",
             "hint": [
@@ -238,7 +238,7 @@
             "parameters": {
                 "id": {
                     "name": "id",
-                    "line": 119,
+                    "line": 113,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -257,7 +257,7 @@
         },
         "destroy": {
             "name": "destroy",
-            "line": 136,
+            "line": 130,
             "short_desc": "Remove ClipFilter from storage.",
             "long_desc": "",
             "hint": [
@@ -275,7 +275,7 @@
             "parameters": {
                 "id": {
                     "name": "id",
-                    "line": 136,
+                    "line": 130,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -294,7 +294,7 @@
         },
         "massDestroy": {
             "name": "massDestroy",
-            "line": 152,
+            "line": 146,
             "short_desc": "Delete all selected ClipFilter at once.",
             "long_desc": "",
             "hint": null,
@@ -307,7 +307,7 @@
             "parameters": {
                 "request": {
                     "name": "request",
-                    "line": 152,
+                    "line": 146,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -325,8 +325,8 @@
                             "Request"
                         ],
                         "attributes": {
-                            "startLine": 152,
-                            "endLine": 152
+                            "startLine": 146,
+                            "endLine": 146
                         }
                     },
                     "default": null,
@@ -337,7 +337,7 @@
         },
         "restore": {
             "name": "restore",
-            "line": 173,
+            "line": 167,
             "short_desc": "Restore ClipFilter from storage.",
             "long_desc": "",
             "hint": [
@@ -355,7 +355,7 @@
             "parameters": {
                 "id": {
                     "name": "id",
-                    "line": 173,
+                    "line": 167,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [
@@ -374,7 +374,7 @@
         },
         "perma_del": {
             "name": "perma_del",
-            "line": 190,
+            "line": 184,
             "short_desc": "Permanently delete ClipFilter from storage.",
             "long_desc": "",
             "hint": [
@@ -392,7 +392,7 @@
             "parameters": {
                 "id": {
                     "name": "id",
-                    "line": 190,
+                    "line": 184,
                     "short_desc": "",
                     "long_desc": null,
                     "hint": [

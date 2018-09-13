@@ -82,6 +82,17 @@ class PermissionSeed extends Seeder
             ['id' => 77, 'title' => 'ftp_edit',],
             ['id' => 78, 'title' => 'ftp_view',],
             ['id' => 79, 'title' => 'ftp_delete',],
+            ['id' => 80, 'title' => 'media_mgmt_access',],
+            ['id' => 86, 'title' => 'image_access',],
+            ['id' => 87, 'title' => 'image_create',],
+            ['id' => 88, 'title' => 'image_edit',],
+            ['id' => 89, 'title' => 'image_view',],
+            ['id' => 90, 'title' => 'image_delete',],
+            ['id' => 91, 'title' => 'video_access',],
+            ['id' => 92, 'title' => 'video_create',],
+            ['id' => 93, 'title' => 'video_edit',],
+            ['id' => 94, 'title' => 'video_view',],
+            ['id' => 95, 'title' => 'video_delete',],
 
         ];
 

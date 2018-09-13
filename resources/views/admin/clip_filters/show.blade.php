@@ -16,10 +16,6 @@
                             <th>@lang('global.clip-filters.fields.filter-by')</th>
                             <td field-key='filter_by'>{{ $clip_filter->filter_by }}</td>
                         </tr>
-                        <tr>
-                            <th>@lang('global.clip-filters.fields.filters')</th>
-                            <td field-key='filters'>{{ $clip_filter->filters->label or '' }}</td>
-                        </tr>
                     </table>
                 </div>
             </div>

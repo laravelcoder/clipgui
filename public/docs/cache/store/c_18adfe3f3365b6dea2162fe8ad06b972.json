@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Controllers\\Admin",
     "file": "\/home\/vagrant\/repos\/clipgui\/app\/Http\/Controllers\/Admin\/BrandsController.php",
     "relative_file": null,
-    "hash": "3e82e5d8c0820b3ee1ffbd906567facd7ce6e3b4",
+    "hash": "ff50c00b7dbfa3bed1d257d3f2f1c1758c5d90bb",
     "parent": "App\\Http\\Controllers\\Controller",
     "modifiers": 0,
     "is_trait": false,

@@ -32,7 +32,6 @@
                         @endcan
 
                         <th>@lang('global.brands.fields.name')</th>
-                        <th>@lang('global.brands.fields.slug')</th>
                         @if( request('show_deleted') == 1 )
                         <th>&nbsp;</th>
                         @else
@@ -50,7 +49,6 @@
                                 @endcan
 
                                 <td field-key='name'>{{ $brand->name }}</td>
-                                <td field-key='slug'>{{ $brand->slug }}</td>
                                 @if( request('show_deleted') == 1 )
                                 <td>
                                     {!! Form::open(array(
@@ -91,7 +89,7 @@
                         @endforeach
                     @else
                         <tr>
-                            <td colspan="7">@lang('global.app_no_entries_in_table')</td>
+                            <td colspan="6">@lang('global.app_no_entries_in_table')</td>
                         </tr>
                     @endif
                 </tbody>

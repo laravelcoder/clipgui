@@ -1,6 +1,6 @@
 {
     "name": "App\\Product",
-    "line": 14,
+    "line": 13,
     "short_desc": "Class Product",
     "long_desc": "",
     "hint": null,
@@ -20,23 +20,13 @@
                 ],
                 "name",
                 ""
-            ],
-            [
-                [
-                    [
-                        "string",
-                        false
-                    ]
-                ],
-                "slug",
-                ""
             ]
         ]
     },
     "namespace": "App",
     "file": "\/home\/vagrant\/repos\/clipgui\/app\/Product.php",
     "relative_file": null,
-    "hash": "ee153e06d336c64e3ed85e49fe8a5750759a6112",
+    "hash": "5c60bd72bc8d2648018c2fc321c14043c26f60a0",
     "parent": "Illuminate\\Database\\Eloquent\\Model",
     "modifiers": 0,
     "is_trait": false,
@@ -53,7 +43,7 @@
     "properties": {
         "fillable": {
             "name": "fillable",
-            "line": 18,
+            "line": 17,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -70,39 +60,21 @@
                             "nodeType": "Scalar_String",
                             "value": "name",
                             "attributes": {
-                                "startLine": 18,
-                                "endLine": 18,
+                                "startLine": 17,
+                                "endLine": 17,
                                 "kind": 1
                             }
                         },
                         "byRef": false,
                         "attributes": {
-                            "startLine": 18,
-                            "endLine": 18
-                        }
-                    },
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "slug",
-                            "attributes": {
-                                "startLine": 18,
-                                "endLine": 18,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "attributes": {
-                            "startLine": 18,
-                            "endLine": 18
+                            "startLine": 17,
+                            "endLine": 17
                         }
                     }
                 ],
                 "attributes": {
-                    "startLine": 18,
-                    "endLine": 18,
+                    "startLine": 17,
+                    "endLine": 17,
                     "kind": 2
                 }
             },
@@ -110,7 +82,7 @@
         },
         "hidden": {
             "name": "hidden",
-            "line": 19,
+            "line": 18,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -121,8 +93,8 @@
                 "nodeType": "Expr_Array",
                 "items": [],
                 "attributes": {
-                    "startLine": 19,
-                    "endLine": 19,
+                    "startLine": 18,
+                    "endLine": 18,
                     "kind": 2
                 }
             },
@@ -130,24 +102,7 @@
         },
         "name": {
             "name": "name",
-            "line": 14,
-            "short_desc": "",
-            "long_desc": null,
-            "hint": [
-                [
-                    "string",
-                    false
-                ]
-            ],
-            "hint_desc": null,
-            "tags": [],
-            "modifiers": null,
-            "default": null,
-            "errors": []
-        },
-        "slug": {
-            "name": "slug",
-            "line": 14,
+            "line": 13,
             "short_desc": "",
             "long_desc": null,
             "hint": [

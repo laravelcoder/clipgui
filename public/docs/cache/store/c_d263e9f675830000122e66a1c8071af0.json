@@ -8,14 +8,13 @@
     "namespace": "",
     "file": "\/home\/vagrant\/repos\/clipgui\/database\/seeds\/ClipSeed.php",
     "relative_file": null,
-    "hash": "adda95cc6348528e1452560901c793af4248eee3",
+    "hash": "5514c4f8a19883957226af37b6be9b4f5393ed58",
     "parent": "Illuminate\\Database\\Seeder",
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
     "aliases": {
         "StreamHandler": "Monolog\\Handler\\StreamHandler",
-        "Schema": "Illuminate\\Support\\Facades\\Schema",
         "Blueprint": "Illuminate\\Database\\Schema\\Blueprint",
         "Migration": "Illuminate\\Database\\Migrations\\Migration",
         "Seeder": "Illuminate\\Database\\Seeder"

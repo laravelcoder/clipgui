@@ -8,7 +8,7 @@
     "namespace": "App\\Http\\Requests\\Admin",
     "file": "\/home\/vagrant\/repos\/clipgui\/app\/Http\/Requests\/Admin\/UpdateClipsRequest.php",
     "relative_file": null,
-    "hash": "dc7c1a88bf470621690c6eacb60ea6dbae34e32c",
+    "hash": "3a9d097cefdb257a49948e7cee28a8b9cac5a0eb",
     "parent": "Illuminate\\Foundation\\Http\\FormRequest",
     "modifiers": 0,
     "is_trait": false,

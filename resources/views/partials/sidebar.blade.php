@@ -32,14 +32,6 @@
                         </a>
                     </li>@endcan
                     
-                    @can('gallery_access')
-                    <li>
-                        <a href="{{ route('admin.galleries.index') }}">
-                            <i class="fa fa-file-video-o"></i>
-                            <span>@lang('global.gallery.title')</span>
-                        </a>
-                    </li>@endcan
-                    
                     @can('detection_access')
                     <li class="treeview">
                         <a href="#">
@@ -75,6 +67,43 @@
                             </li>@endcan
                             
                         </ul>
+                    </li>@endcan
+                    
+                    @can('media_mgmt_access')
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-gears"></i>
+                            <span>@lang('global.media-mgmt.title')</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @can('gallery_access')
+                            <li>
+                                <a href="{{ route('admin.galleries.index') }}">
+                                    <i class="fa fa-file-video-o"></i>
+                                    <span>@lang('global.gallery.title')</span>
+                                </a>
+                            </li>@endcan
+                            
+                            @can('image_access')
+                            <li>
+                                <a href="{{ route('admin.images.index') }}">
+                                    <i class="fa fa-gears"></i>
+                                    <span>@lang('global.images.title')</span>
+                                </a>
+                            </li>@endcan
+                            
+                        </ul>
+                    </li>@endcan
+                    
+                    @can('video_access')
+                    <li>
+                        <a href="{{ route('admin.videos.index') }}">
+                            <i class="fa fa-video-camera"></i>
+                            <span>@lang('global.videos.title')</span>
+                        </a>
                     </li>@endcan
                     
                 </ul>

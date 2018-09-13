@@ -53,8 +53,10 @@ class ClipsController extends Controller
         $brands = \App\Brand::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $states = \App\State::get()->pluck('state', 'id')->prepend(trans('global.app_please_select'), '');
         $products = \App\Product::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $images = \App\Image::get()->pluck('image', 'id');
 
-        return view('admin.clips.create', compact('industries', 'brands', 'states', 'products'));
+
+        return view('admin.clips.create', compact('industries', 'brands', 'states', 'products', 'images'));
     }
 
     /**
@@ -68,8 +70,10 @@ class ClipsController extends Controller
         if (! Gate::allows('clip_create')) {
             return abort(401);
         }
+        
         $request = $this->saveFiles($request);
         $clip = Clip::create($request->all());
+        $clip->images()->sync(array_filter((array)$request->input('images')));
 
 
 
@@ -93,10 +97,12 @@ class ClipsController extends Controller
         $brands = \App\Brand::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $states = \App\State::get()->pluck('state', 'id')->prepend(trans('global.app_please_select'), '');
         $products = \App\Product::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $images = \App\Image::get()->pluck('image', 'id');
+
 
         $clip = Clip::findOrFail($id);
 
-        return view('admin.clips.edit', compact('clip', 'industries', 'brands', 'states', 'products'));
+        return view('admin.clips.edit', compact('clip', 'industries', 'brands', 'states', 'products', 'images'));
     }
 
     /**
@@ -114,6 +120,7 @@ class ClipsController extends Controller
         $request = $this->saveFiles($request);
         $clip = Clip::findOrFail($id);
         $clip->update($request->all());
+        $clip->images()->sync(array_filter((array)$request->input('images')));
 
 
 
@@ -136,20 +143,14 @@ class ClipsController extends Controller
         $industries = \App\Industry::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $brands = \App\Brand::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
         $states = \App\State::get()->pluck('state', 'id')->prepend(trans('global.app_please_select'), '');
-        $products = \App\Product::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');$clip_filters = \App\ClipFilter::where('filters_id', $id)->get();$states = \App\State::whereHas('clips',
-                    function ($query) use ($id) {
-                        $query->where('id', $id);
-                    })->get();$brands = \App\Brand::whereHas('clips',
-                    function ($query) use ($id) {
-                        $query->where('id', $id);
-                    })->get();$products = \App\Product::whereHas('clips',
-                    function ($query) use ($id) {
-                        $query->where('id', $id);
-                    })->get();
+        $products = \App\Product::get()->pluck('name', 'id')->prepend(trans('global.app_please_select'), '');
+        $images = \App\Image::get()->pluck('image', 'id');
+        
+        $clip_filters = \App\ClipFilter::where('filters_id', $id)->get();
 
         $clip = Clip::findOrFail($id);
 
-        return view('admin.clips.show', compact('clip', 'clip_filters', 'states', 'brands', 'products'));
+        return view('admin.clips.show', compact('clip', 'clip_filters'));
     }
 
 

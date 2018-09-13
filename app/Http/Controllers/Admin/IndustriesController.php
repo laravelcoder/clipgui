@@ -115,11 +115,11 @@ class IndustriesController extends Controller
         if (! Gate::allows('industry_view')) {
             return abort(401);
         }
-        $clips = \App\Clip::where('industry_id', $id)->get();
+        $videos = \App\Video::where('industry_id', $id)->get();$clips = \App\Clip::where('industry_id', $id)->get();
 
         $industry = Industry::findOrFail($id);
 
-        return view('admin.industries.show', compact('industry', 'clips'));
+        return view('admin.industries.show', compact('industry', 'videos', 'clips'));
     }
 
 

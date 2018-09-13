@@ -1,6 +1,6 @@
 {
     "name": "App\\ClipFilter",
-    "line": 14,
+    "line": 13,
     "short_desc": "Class ClipFilter",
     "long_desc": "",
     "hint": null,
@@ -20,23 +20,13 @@
                 ],
                 "filter_by",
                 ""
-            ],
-            [
-                [
-                    [
-                        "string",
-                        false
-                    ]
-                ],
-                "filters",
-                ""
             ]
         ]
     },
     "namespace": "App",
     "file": "\/home\/vagrant\/repos\/clipgui\/app\/ClipFilter.php",
     "relative_file": null,
-    "hash": "983488a23dac452637fd14677bd783f5d355b40d",
+    "hash": "257d6365ae9e091ba6a6c83d46a96cd7304bc312",
     "parent": "Illuminate\\Database\\Eloquent\\Model",
     "modifiers": 0,
     "is_trait": false,
@@ -53,7 +43,7 @@
     "properties": {
         "fillable": {
             "name": "fillable",
-            "line": 18,
+            "line": 17,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -70,39 +60,21 @@
                             "nodeType": "Scalar_String",
                             "value": "filter_by",
                             "attributes": {
-                                "startLine": 18,
-                                "endLine": 18,
+                                "startLine": 17,
+                                "endLine": 17,
                                 "kind": 1
                             }
                         },
                         "byRef": false,
                         "attributes": {
-                            "startLine": 18,
-                            "endLine": 18
-                        }
-                    },
-                    {
-                        "nodeType": "Expr_ArrayItem",
-                        "key": null,
-                        "value": {
-                            "nodeType": "Scalar_String",
-                            "value": "filters_id",
-                            "attributes": {
-                                "startLine": 18,
-                                "endLine": 18,
-                                "kind": 1
-                            }
-                        },
-                        "byRef": false,
-                        "attributes": {
-                            "startLine": 18,
-                            "endLine": 18
+                            "startLine": 17,
+                            "endLine": 17
                         }
                     }
                 ],
                 "attributes": {
-                    "startLine": 18,
-                    "endLine": 18,
+                    "startLine": 17,
+                    "endLine": 17,
                     "kind": 2
                 }
             },
@@ -110,7 +82,7 @@
         },
         "hidden": {
             "name": "hidden",
-            "line": 19,
+            "line": 18,
             "short_desc": "",
             "long_desc": "",
             "hint": null,
@@ -121,8 +93,8 @@
                 "nodeType": "Expr_Array",
                 "items": [],
                 "attributes": {
-                    "startLine": 19,
-                    "endLine": 19,
+                    "startLine": 18,
+                    "endLine": 18,
                     "kind": 2
                 }
             },
@@ -130,24 +102,7 @@
         },
         "filter_by": {
             "name": "filter_by",
-            "line": 14,
-            "short_desc": "",
-            "long_desc": null,
-            "hint": [
-                [
-                    "string",
-                    false
-                ]
-            ],
-            "hint_desc": null,
-            "tags": [],
-            "modifiers": null,
-            "default": null,
-            "errors": []
-        },
-        "filters": {
-            "name": "filters",
-            "line": 14,
+            "line": 13,
             "short_desc": "",
             "long_desc": null,
             "hint": [
@@ -163,48 +118,6 @@
             "errors": []
         }
     },
-    "methods": {
-        "setFiltersIdAttribute": {
-            "name": "setFiltersIdAttribute",
-            "line": 27,
-            "short_desc": "Set to null if empty",
-            "long_desc": "",
-            "hint": null,
-            "hint_desc": null,
-            "tags": [],
-            "modifiers": 1,
-            "is_by_ref": "",
-            "exceptions": [],
-            "errors": [],
-            "parameters": {
-                "input": {
-                    "name": "input",
-                    "line": 27,
-                    "short_desc": "",
-                    "long_desc": null,
-                    "hint": [],
-                    "tags": [],
-                    "modifiers": null,
-                    "default": null,
-                    "variadic": false,
-                    "is_by_ref": false
-                }
-            }
-        },
-        "filters": {
-            "name": "filters",
-            "line": 32,
-            "short_desc": "",
-            "long_desc": "",
-            "hint": null,
-            "hint_desc": null,
-            "tags": [],
-            "modifiers": 1,
-            "is_by_ref": "",
-            "exceptions": [],
-            "errors": [],
-            "parameters": []
-        }
-    },
+    "methods": [],
     "constants": []
 }

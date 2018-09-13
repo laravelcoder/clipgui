@@ -23,6 +23,9 @@ class StoreClipsRequest extends FormRequest
     public function rules()
     {
         return [
+            'images.*' => 'exists:images,id',
+            'converted_for_downloading_at' => 'nullable|date_format:'.config('app.date_format').' H:i:s',
+            'converted_for_streaming_at' => 'nullable|date_format:'.config('app.date_format').' H:i:s',
         ];
     }
 }

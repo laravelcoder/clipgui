@@ -8,14 +8,13 @@
     "namespace": "",
     "file": "\/home\/vagrant\/repos\/clipgui\/database\/seeds\/RoleSeedPivot.php",
     "relative_file": null,
-    "hash": "77fc2d5936aa1e9edcb3213ef0c431dea86f1849",
+    "hash": "0db4aac0d7b2d7dd556f238a02e9228089784b47",
     "parent": "Illuminate\\Database\\Seeder",
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
     "aliases": {
         "StreamHandler": "Monolog\\Handler\\StreamHandler",
-        "Schema": "Illuminate\\Support\\Facades\\Schema",
         "Blueprint": "Illuminate\\Database\\Schema\\Blueprint",
         "Migration": "Illuminate\\Database\\Migrations\\Migration",
         "Seeder": "Illuminate\\Database\\Seeder"

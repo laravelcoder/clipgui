@@ -22,18 +22,6 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('filters_id', trans('global.clip-filters.fields.filters').'', ['class' => 'control-label']) !!}
-                    {!! Form::select('filters_id', $filters, old('filters_id'), ['class' => 'form-control select2']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('filters_id'))
-                        <p class="help-block">
-                            {{ $errors->first('filters_id') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
             
         </div>
     </div>

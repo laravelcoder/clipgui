@@ -1,0 +1,38 @@
+{
+    "name": "App\\Handlers\\LfmConfigHandler",
+    "line": 5,
+    "short_desc": "",
+    "long_desc": "",
+    "hint": null,
+    "tags": [],
+    "namespace": "App\\Handlers",
+    "file": "\/home\/vagrant\/repos\/clipgui\/app\/Handlers\/LfmConfigHandler.php",
+    "relative_file": null,
+    "hash": "156afcda0463f640ec3760e7af5d72086eb69ef8",
+    "parent": "UniSharp\\LaravelFilemanager\\Handlers\\ConfigHandler",
+    "modifiers": 0,
+    "is_trait": false,
+    "is_interface": false,
+    "aliases": [],
+    "errors": [],
+    "interfaces": [],
+    "traits": [],
+    "properties": [],
+    "methods": {
+        "userField": {
+            "name": "userField",
+            "line": 7,
+            "short_desc": "",
+            "long_desc": "",
+            "hint": null,
+            "hint_desc": null,
+            "tags": [],
+            "modifiers": 1,
+            "is_by_ref": "",
+            "exceptions": [],
+            "errors": [],
+            "parameters": []
+        }
+    },
+    "constants": []
+}

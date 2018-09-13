@@ -1,4 +1,37 @@
 <?php
+
+// Route::middleware('auth')->group(function () {
+    Route::get('/r', function () {
+        function philsroutes(): void
+        {
+            $routeCollection = Route::getRoutes();
+            echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">';
+            echo "<div class='container'><div class='col-md-12'><table class='table table-striped' style='width:100%'>";
+            echo '<tr>';
+            echo "<td width='10%'><h4>HTTP Method</h4></td>";
+            echo "<td width='30%'><h4>URL</h4></td>";
+            echo "<td width='30%'><h4>Route</h4></td>";
+            echo "<td width='30%'><h4>Corresponding Action</h4></td>";
+            echo '</tr>';
+
+            foreach ($routeCollection as $value) {
+                echo '<tr>';
+                echo '<td>'.$value->methods()[0].'</td>';
+                echo "<td><a href='".$value->uri()."' target='_blank'>".$value->uri().'</a> </td>';
+                echo '<td>'.$value->getName().'</td>';
+                echo '<td>'.$value->getActionName().'</td>';
+                echo '</tr>';
+            }
+
+            echo '</table></div></div>';
+            echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>';
+        }
+
+        return philsroutes();
+    });
+// });
+
+
 Route::get('/', function () { return redirect('/admin/home'); });
 
 // Authentication Routes...
@@ -15,6 +48,15 @@ $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('auth.password.reset');
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
+
+ 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+    // Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+   Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+    
+});
+
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
@@ -66,6 +108,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('ftps_mass_destroy', ['uses' => 'Admin\FtpsController@massDestroy', 'as' => 'ftps.mass_destroy']);
     Route::post('ftps_restore/{id}', ['uses' => 'Admin\FtpsController@restore', 'as' => 'ftps.restore']);
     Route::delete('ftps_perma_del/{id}', ['uses' => 'Admin\FtpsController@perma_del', 'as' => 'ftps.perma_del']);
+    Route::resource('images', 'Admin\ImagesController');
+    Route::post('images_mass_destroy', ['uses' => 'Admin\ImagesController@massDestroy', 'as' => 'images.mass_destroy']);
+    Route::post('images_restore/{id}', ['uses' => 'Admin\ImagesController@restore', 'as' => 'images.restore']);
+    Route::delete('images_perma_del/{id}', ['uses' => 'Admin\ImagesController@perma_del', 'as' => 'images.perma_del']);
+    Route::resource('videos', 'Admin\VideosController');
+    Route::post('videos_mass_destroy', ['uses' => 'Admin\VideosController@massDestroy', 'as' => 'videos.mass_destroy']);
+    Route::post('videos_restore/{id}', ['uses' => 'Admin\VideosController@restore', 'as' => 'videos.restore']);
+    Route::delete('videos_perma_del/{id}', ['uses' => 'Admin\VideosController@perma_del', 'as' => 'videos.perma_del']);
 
 
 

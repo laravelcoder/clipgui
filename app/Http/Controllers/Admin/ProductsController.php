@@ -115,11 +115,11 @@ class ProductsController extends Controller
         if (! Gate::allows('product_view')) {
             return abort(401);
         }
-        $clips = \App\Clip::where('products_id', $id)->get();
+        $videos = \App\Video::where('products_id', $id)->get();$clips = \App\Clip::where('products_id', $id)->get();
 
         $product = Product::findOrFail($id);
 
-        return view('admin.products.show', compact('product', 'clips'));
+        return view('admin.products.show', compact('product', 'videos', 'clips'));
     }
 
 

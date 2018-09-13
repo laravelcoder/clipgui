@@ -6,16 +6,15 @@
     "hint": null,
     "tags": [],
     "namespace": "",
-    "file": "\/home\/vagrant\/repos\/clipgui\/database\/migrations\/combined\/2018_09_12_205153_create_combined_1536351084_clips_table.php",
+    "file": "\/home\/vagrant\/repos\/clipgui\/database\/migrations\/2018_09_12_233753_create_combined_1536351084_clips_table.php",
     "relative_file": null,
-    "hash": "d17c55d6f7f8108dff661f93cd86ead3106307f7",
+    "hash": "9a735260bbcb32f390cd3d78b7d64a7ca6b7b7d6",
     "parent": "Illuminate\\Database\\Migrations\\Migration",
     "modifiers": 0,
     "is_trait": false,
     "is_interface": false,
     "aliases": {
         "StreamHandler": "Monolog\\Handler\\StreamHandler",
-        "Schema": "Illuminate\\Support\\Facades\\Schema",
         "Blueprint": "Illuminate\\Database\\Schema\\Blueprint",
         "Migration": "Illuminate\\Database\\Migrations\\Migration"
     },
@@ -45,7 +44,7 @@
         },
         "down": {
             "name": "down",
-            "line": 36,
+            "line": 42,
             "short_desc": "Reverse the migrations.",
             "long_desc": "",
             "hint": [

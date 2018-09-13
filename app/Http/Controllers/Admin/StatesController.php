@@ -115,11 +115,11 @@ class StatesController extends Controller
         if (! Gate::allows('state_view')) {
             return abort(401);
         }
-        $clips = \App\Clip::where('states_id', $id)->get();
+        $videos = \App\Video::where('states_id', $id)->get();$clips = \App\Clip::where('states_id', $id)->get();
 
         $state = State::findOrFail($id);
 
-        return view('admin.states.show', compact('state', 'clips'));
+        return view('admin.states.show', compact('state', 'videos', 'clips'));
     }
 
 

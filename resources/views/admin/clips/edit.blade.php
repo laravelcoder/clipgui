@@ -13,6 +13,54 @@
         <div class="panel-body">
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('title', trans('global.clips.fields.title').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('title'))
+                        <p class="help-block">
+                            {{ $errors->first('title') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('original_name', trans('global.clips.fields.original-name').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('original_name', old('original_name'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('original_name'))
+                        <p class="help-block">
+                            {{ $errors->first('original_name') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('disk', trans('global.clips.fields.disk').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('disk', old('disk'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('disk'))
+                        <p class="help-block">
+                            {{ $errors->first('disk') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('path', trans('global.clips.fields.path').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('path', old('path'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('path'))
+                        <p class="help-block">
+                            {{ $errors->first('path') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('label', trans('global.clips.fields.label').'', ['class' => 'control-label']) !!}
                     {!! Form::text('label', old('label'), ['class' => 'form-control', 'placeholder' => '']) !!}
                     <p class="help-block"></p>
@@ -112,6 +160,48 @@
                     @endif
                 </div>
             </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('images', trans('global.clips.fields.images').'', ['class' => 'control-label']) !!}
+                    <button type="button" class="btn btn-primary btn-xs" id="selectbtn-images">
+                        {{ trans('global.app_select_all') }}
+                    </button>
+                    <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-images">
+                        {{ trans('global.app_deselect_all') }}
+                    </button>
+                    {!! Form::select('images[]', $images, old('images') ? old('images') : $clip->images->pluck('id')->toArray(), ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'selectall-images' ]) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('images'))
+                        <p class="help-block">
+                            {{ $errors->first('images') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('converted_for_downloading_at', trans('global.clips.fields.converted-for-downloading-at').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('converted_for_downloading_at', old('converted_for_downloading_at'), ['class' => 'form-control datetime', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('converted_for_downloading_at'))
+                        <p class="help-block">
+                            {{ $errors->first('converted_for_downloading_at') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('converted_for_streaming_at', trans('global.clips.fields.converted-for-streaming-at').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('converted_for_streaming_at', old('converted_for_streaming_at'), ['class' => 'form-control datetime', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('converted_for_streaming_at'))
+                        <p class="help-block">
+                            {{ $errors->first('converted_for_streaming_at') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
             
         </div>
     </div>
@@ -134,4 +224,31 @@
         });
     </script>
 
+    <script src="{{ url('adminlte/plugins/datetimepicker/moment-with-locales.min.js') }}"></script>
+    <script src="{{ url('adminlte/plugins/datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
+    <script>
+        $(function(){
+            moment.updateLocale('{{ App::getLocale() }}', {
+                week: { dow: 1 } // Monday is the first day of the week
+            });
+            
+            $('.datetime').datetimepicker({
+                format: "{{ config('app.datetime_format_moment') }}",
+                locale: "{{ App::getLocale() }}",
+                sideBySide: true,
+            });
+            
+        });
+    </script>
+            
+    <script>
+        $("#selectbtn-images").click(function(){
+            $("#selectall-images > option").prop("selected","selected");
+            $("#selectall-images").trigger("change");
+        });
+        $("#deselectbtn-images").click(function(){
+            $("#selectall-images > option").prop("selected","");
+            $("#selectall-images").trigger("change");
+        });
+    </script>
 @stop
