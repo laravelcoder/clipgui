@@ -1,10 +1,11 @@
 <?php
+
 namespace App\Http\Controllers\Traits;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
-trait FileUploadTrait
+trait FileUploadTrait-saved
 {
 
     /**
@@ -30,7 +31,7 @@ trait FileUploadTrait
             mkdir($caiPath, 0775);
         }
 
-        $getcai = env('CAI_SERVER');  // http://d-gp2-tocai-1.imovetv.com/TOCAI.php?
+        $getcai = env('CAI_SERVER');
         $transcoder = "/TOCAI.php?";
 
         $finalRequest = $request;
@@ -62,55 +63,28 @@ trait FileUploadTrait
                     $image->save($imagePath . '/' . $filename);
                     $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
                 } else {
-
                     $filename = $request->file($key)->getClientOriginalName();
-                    $extension = $request->file($key)->getClientOriginalExtension();
                     if(preg_match('/^.*\.(mp4|mov|mpg|mpeg|wmv|mkv)$/i', $filename)){
-                        //Log::info('passed valication: '.$filename);
                         $filename = $request->file($key)->getClientOriginalName();
-                        $basename = substr($filename, 0, strrpos($filename, "."));       
+                        $filename = preg_replace('/([^.a-z0-9]+)/i', '-', $filename);
+                        $filename = str_replace(' ', '_', strtolower($filename));
+                        $basename = substr($filename, 0, strrpos($filename, "."));
+
+
+
+
 
                         /**
                          * THIS IS THE CALL TO THE TRANSCODE SERVER RUNNING WGET IN PHP EXEC
-                         * 
-                         * send to 
-                         * http://d-gp2-tocai-1.imovetv.com/TOCAI.php?
-                         * with this file
-                         * localhost/file.mp4
-                         * get and save response as a new file
-                         * newfile.dat
-                         * 
-                         * http://d-gp2-tocai-1.imovetv.com/TOCAI.php?localhost/file.mp4 > newfile.dat
-                         * 
                          */
-                        // $getcai . $transcoder .  url("/") . "/" . $filename
-                            //exec("wget -q " . $getcai . $transcoder . url("/") . "/" . $filename ." -O " . $caiPath . "/" . $basename . ".cai");
-                        //
-               
- 
+                        exec("wget -q " . $getcai . $transcoder . url("/") . "/" . $filename ." -O " . $caiPath . "/" . $basename . ".cai");
 
-                        $filename = str_slug($basename) . '.' . $extension;
+
+
+
+
                         $request->file($key)->move($clipPath, $filename);
                         $finalRequest = new Request(array_merge($finalRequest->all(), [$key => $filename]));
-                        $file_w_path = $clipPath . "/" . $filename;
-
-                        try {
-                            $ch = curl_init();  
-                            // curl_setopt($ch,CURLOPT_URL,"". $getcai . $transcoder .  $file_w_path ."");
-                            curl_setopt($ch,CURLOPT_URL,"http://d-gp2-tocai-1.imovetv.com/TOCAI.php?http://d-gp2-caipyascs0-1.imovetv.com/ftp/downloads/coca-cola.mp4");
-                            curl_setopt($ch, CURLOPT_HEADER, 0);
-                            curl_setopt($ch, CURLOPT_POST, 1);
-                            curl_setopt($ch, CURLOPT_TIMEOUT, 300); 
-                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-              
-                            $output = curl_exec($ch);
-                            file_put_contents($caiPath . "/" . str_slug($basename) . '.cai',$output);
-                            curl_close($ch);
-                        }
-                        catch (Exception $e) {
-                            //exception handling code goes here
-                        }
-
                     }else{
                         $filename = $request->file($key)->getClientOriginalName();
                         $filename = preg_replace('/([^.a-z0-9]+)/i', '-', $filename);

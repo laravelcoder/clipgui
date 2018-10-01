@@ -14,23 +14,23 @@
 <script src="//cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
-<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
-<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.2.4/js/buttons.colVis.min.js"></script>
+<script src="//cdn.datatables.net/select/1.2.0/js/dataTables.select.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 <script src="{{ asset('adminlte/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('adminlte/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('adminlte/js/main.js') }}"></script>
  <script src="{{ asset('/vendor/laravel-filemanager/js/lfm.js') }}"></script>
 
-
+ 
 <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
-<script src="https://blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+<script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
 <!-- The Canvas to Blob plugin is included for image resizing functionality -->
-<script src="https://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script> 
+<script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script> 
 <script src="{{ asset('fileupload/js/jquery.iframe-transport.js') }}"></script>
 <!-- The basic File Upload plugin -->
 <script src="{{ asset('fileupload/js/jquery.fileupload.js') }}"></script>

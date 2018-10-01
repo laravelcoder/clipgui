@@ -58,6 +58,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
     
@@ -121,3 +122,14 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
 
  
 });
+ 
+ 
+
+ 
+Route::get('/', 'UploadController@uploadForm');
+Route::post('/upload', 'Admin\AjaxController@uploadSubmit');
+// Route::post('/admin/clips/create', 'UploadController@postClip');
+ 
+
+// Route::post('admin/clips/create', ['Admin\AjaxController@postdata', 'as' => 'upload.clip']);
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

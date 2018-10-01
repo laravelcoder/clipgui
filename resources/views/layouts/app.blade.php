@@ -46,6 +46,9 @@
                 </div>
             </div>
         </section>
+
+{{-- @include('partials.modals') --}}
+
     </div>
 </div>
 

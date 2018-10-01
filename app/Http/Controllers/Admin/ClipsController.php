@@ -72,10 +72,10 @@ class ClipsController extends Controller
         }
         
         $request = $this->saveFiles($request);
+      
         $clip = Clip::create($request->all());
-        $clip->images()->sync(array_filter((array)$request->input('images')));
-
-
+        // dd($clip);
+        $clip->images()->sync(array_filter((array) $request->input('images')));
 
         return redirect()->route('admin.clips.index');
     }
@@ -117,7 +117,9 @@ class ClipsController extends Controller
         if (! Gate::allows('clip_edit')) {
             return abort(401);
         }
+        
         $request = $this->saveFiles($request);
+
         $clip = Clip::findOrFail($id);
         $clip->update($request->all());
         $clip->images()->sync(array_filter((array)$request->input('images')));
@@ -127,7 +129,8 @@ class ClipsController extends Controller
         return redirect()->route('admin.clips.index');
     }
 
-
+ 
+  
     /**
      * Display Clip.
      *
@@ -224,4 +227,6 @@ class ClipsController extends Controller
 
         return redirect()->route('admin.clips.index');
     }
+
+    
 }
