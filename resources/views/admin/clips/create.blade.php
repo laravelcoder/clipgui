@@ -299,7 +299,7 @@
     {% } %}
     </script>
     <script>
-
+// https://www.cloudways.com/blog/laravel-multiple-files-images-upload/
     $(function () {
         $('#fileupload').fileupload({
             dataType: 'json',
@@ -322,6 +322,99 @@
         });
     });
 
+        $(function () {
+            // var uploadButton = $('#formsubmit')
+            //     .on('click', function () {
+            //         var $this = $(this), data = $this.data();
+            //         $this.off('click').text('Abort').on('click', function () {
+            //             $this.remove();
+            //             data.abort();
+            //         });
+            //         data.submit().always(function () {
+            //             $this.remove();
+            //         });
+            //     });
+            $('#fileupload').fileupload({
 
+                dataType: 'json',
+
+                add: function (e, data) {
+                    $('#loading').text('Uploading...');
+                    data.submit();
+                },
+ 
+
+                // add: function (e, data) {
+                //     var that = this;
+                //         $.blueimp.fileupload.prototype.options.add.call(that, e, data);
+                //     var jqXHR = data.submit()
+                //         .success(function (result, textStatus, jqXHR) {
+                //             alert("File uploaded successfully"); 
+                //             console.log("File uploaded successfully");
+                //         })
+                //         .error(function (jqXHR, textStatus, errorThrown) {
+                //             if (errorThrown === 'abort') {
+                //                 alert('File Upload has been canceled');
+                //             }
+                //         })
+                //         .complete(function (result, textStatus, jqXHR) {/* ... */});
+                // },
+                autoUpload: false,
+                // disableImageResize: /Android(?!.*Chrome)|Opera/.test(window.navigator && navigator.userAgent),
+                // imageMaxWidth: 400,
+                // imageMaxHeight: 600,
+                // imageCrop: true,
+                acceptFileTypes: /(\.|\/)(mp4|mov|mpg|mpeg|wmv|mkv)$/i,
+            
+                done: function (e, data) {
+                    $.each(data.result.files, function (index, file) {
+                        $('<p/>').html(file.name + ' (' + file.size + ' KB)').appendTo($('#files_list'));
+                        if ($('#file_ids').val() != '') {
+                            $('#file_ids').val($('#file_ids').val() + ',');
+                        }
+                        $('#file_ids').val($('#file_ids').val() + file.fileID);
+                    });
+                    $('#loading').text('');
+                }
+            })
+            .on('fileuploadadd', function (e, data) {
+                data.context = $('<div/>').appendTo('#files');
+                $.each(data.files, function(index, file) {
+                    var node = $('<p/>').append($('<span/>').text(file.name));
+                    node.appendTo(data.context);
+                });
+                console.log('added clip to uploader');
+            })
+            .on('fileuploadprocessalways', function (e, data) {
+                var index = data.index,
+
+                    file = data.files[index],
+                    node = $(data.context.children()[index]);
+                    
+                if (file.preview) {  node.prepend('<br>').prepend(file.preview); }
+                console.log('Processing ' + data.files[data.index].name);
+            })
+            .on('fileuploadprogressall', function (e, data) {
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $('#progress .progress-bar').css( 'width', progress + '%');
+            })
+            .on('fileuploaddone', function (e, data) {
+                $.each(data.result.files, function (index, file) {
+                    if (file.url) {
+                        var link = $('<a>')
+                            .attr('target', '_blank')
+                            .prop('href', file.url);
+                        $(data.context.children()[index])
+                            .wrap(link);
+                    } else if (file.error) {
+                        var error = $('<span class="text-danger"/>').text(file.error);
+                        $(data.context.children()[index])
+                            .append('<br>')
+                            .append(error);
+                    }
+                });
+            });
+   
+        });
     </script>
 @stop
