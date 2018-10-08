@@ -1,4 +1,37 @@
 <?php
+
+// Route::middleware('auth')->group(function () {
+    Route::get('/r', function () {
+        function philsroutes(): void
+        {
+            $routeCollection = Route::getRoutes();
+            echo '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">';
+            echo "<div class='container'><div class='col-md-12'><table class='table table-striped' style='width:100%'>";
+            echo '<tr>';
+            echo "<td width='10%'><h4>HTTP Method</h4></td>";
+            echo "<td width='30%'><h4>URL</h4></td>";
+            echo "<td width='30%'><h4>Route</h4></td>";
+            echo "<td width='30%'><h4>Corresponding Action</h4></td>";
+            echo '</tr>';
+
+            foreach ($routeCollection as $value) {
+                echo '<tr>';
+                echo '<td>'.$value->methods()[0].'</td>';
+                echo "<td><a href='".$value->uri()."' target='_blank'>".$value->uri().'</a> </td>';
+                echo '<td>'.$value->getName().'</td>';
+                echo '<td>'.$value->getActionName().'</td>';
+                echo '</tr>';
+            }
+
+            echo '</table></div></div>';
+            echo '<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>';
+        }
+
+        return philsroutes();
+    });
+// });
+
+
 Route::get('/', function () { return redirect('/admin/home'); });
 
 // Authentication Routes...
@@ -16,10 +49,20 @@ $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 $this->post('password/reset', 'Auth\ResetPasswordController@reset')->name('auth.password.reset');
 
+ 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+    // Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+   Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+    
+});
+
+
+
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
     Route::get('/home', 'HomeController@index');
     
-    Route::resource('clips', 'Admin\ClipsController');
+  Route::resource('clips', 'Admin\ClipsController');
     Route::post('clips_mass_destroy', ['uses' => 'Admin\ClipsController@massDestroy', 'as' => 'clips.mass_destroy']);
     Route::post('clips_restore/{id}', ['uses' => 'Admin\ClipsController@restore', 'as' => 'clips.restore']);
     Route::delete('clips_perma_del/{id}', ['uses' => 'Admin\ClipsController@perma_del', 'as' => 'clips.perma_del']);
@@ -31,10 +74,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('clip_filters_mass_destroy', ['uses' => 'Admin\ClipFiltersController@massDestroy', 'as' => 'clip_filters.mass_destroy']);
     Route::post('clip_filters_restore/{id}', ['uses' => 'Admin\ClipFiltersController@restore', 'as' => 'clip_filters.restore']);
     Route::delete('clip_filters_perma_del/{id}', ['uses' => 'Admin\ClipFiltersController@perma_del', 'as' => 'clip_filters.perma_del']);
-    Route::resource('states', 'Admin\StatesController');
-    Route::post('states_mass_destroy', ['uses' => 'Admin\StatesController@massDestroy', 'as' => 'states.mass_destroy']);
-    Route::post('states_restore/{id}', ['uses' => 'Admin\StatesController@restore', 'as' => 'states.restore']);
-    Route::delete('states_perma_del/{id}', ['uses' => 'Admin\StatesController@perma_del', 'as' => 'states.perma_del']);
     Route::resource('brands', 'Admin\BrandsController');
     Route::post('brands_mass_destroy', ['uses' => 'Admin\BrandsController@massDestroy', 'as' => 'brands.mass_destroy']);
     Route::post('brands_restore/{id}', ['uses' => 'Admin\BrandsController@restore', 'as' => 'brands.restore']);
@@ -66,8 +105,40 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     Route::post('ftps_mass_destroy', ['uses' => 'Admin\FtpsController@massDestroy', 'as' => 'ftps.mass_destroy']);
     Route::post('ftps_restore/{id}', ['uses' => 'Admin\FtpsController@restore', 'as' => 'ftps.restore']);
     Route::delete('ftps_perma_del/{id}', ['uses' => 'Admin\FtpsController@perma_del', 'as' => 'ftps.perma_del']);
+    Route::resource('images', 'Admin\ImagesController');
+    Route::post('images_mass_destroy', ['uses' => 'Admin\ImagesController@massDestroy', 'as' => 'images.mass_destroy']);
+    Route::post('images_restore/{id}', ['uses' => 'Admin\ImagesController@restore', 'as' => 'images.restore']);
+    Route::delete('images_perma_del/{id}', ['uses' => 'Admin\ImagesController@perma_del', 'as' => 'images.perma_del']);
+    Route::resource('apis', 'Admin\ApisController');
+    Route::resource('states', 'Admin\StatesController');
+    Route::post('states_mass_destroy', ['uses' => 'Admin\StatesController@massDestroy', 'as' => 'states.mass_destroy']);
+    Route::post('states_restore/{id}', ['uses' => 'Admin\StatesController@restore', 'as' => 'states.restore']);
+    Route::delete('states_perma_del/{id}', ['uses' => 'Admin\StatesController@perma_del', 'as' => 'states.perma_del']);
+    Route::resource('countries', 'Admin\CountriesController');
+    Route::post('countries_mass_destroy', ['uses' => 'Admin\CountriesController@massDestroy', 'as' => 'countries.mass_destroy']);
+    Route::post('countries_restore/{id}', ['uses' => 'Admin\CountriesController@restore', 'as' => 'countries.restore']);
+    Route::delete('countries_perma_del/{id}', ['uses' => 'Admin\CountriesController@perma_del', 'as' => 'countries.perma_del']);
+
+    Route::model('messenger', 'App\MessengerTopic');
+    Route::get('messenger/inbox', 'Admin\MessengerController@inbox')->name('messenger.inbox');
+    Route::get('messenger/outbox', 'Admin\MessengerController@outbox')->name('messenger.outbox');
+    Route::resource('messenger', 'Admin\MessengerController');
+
+
+    Route::get('search', 'MegaSearchController@search')->name('mega-search');
 
 
 
  
 });
+ 
+ 
+
+Route::get('mods', function () { dd(get_loaded_extensions()); });
+// Route::get('/', 'UploadController@uploadForm');
+// Route::post('/upload', 'Admin\AjaxController@uploadSubmit');
+// Route::post('/admin/clips/create', 'UploadController@postClip');
+ 
+
+// Route::post('admin/clips/create', ['Admin\AjaxController@postdata', 'as' => 'upload.clip']);
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

@@ -11,13 +11,61 @@
         
         <div class="panel-body">
             <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('label', trans('global.clips.fields.label').'', ['class' => 'control-label']) !!}
-                    {!! Form::text('label', old('label'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                <div class="col-xs-12 col-md-3 col-lg-3 form-group">
+                    {!! Form::label('industry_id', trans('global.clips.fields.industry').'', ['class' => 'control-label']) !!}
+                    {!! Form::select('industry_id', $industries, old('industry_id'), ['class' => 'form-control select2']) !!}
                     <p class="help-block"></p>
-                    @if($errors->has('label'))
+                    @if($errors->has('industry_id'))
                         <p class="help-block">
-                            {{ $errors->first('label') }}
+                            {{ $errors->first('industry_id') }}
+                        </p>
+                    @endif
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3 form-group">
+                    {!! Form::label('brand_id', trans('global.clips.fields.brand').'', ['class' => 'control-label']) !!}
+                    {!! Form::select('brand_id', $brands, old('brand_id'), ['class' => 'form-control select2']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('brand_id'))
+                        <p class="help-block">
+                            {{ $errors->first('brand_id') }}
+                        </p>
+                    @endif
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3 form-group">
+                    {!! Form::label('products_id', trans('global.clips.fields.products').'', ['class' => 'control-label']) !!}
+                    {!! Form::select('products_id', $products, old('products_id'), ['class' => 'form-control select2']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('products_id'))
+                        <p class="help-block">
+                            {{ $errors->first('products_id') }}
+                        </p>
+                    @endif
+                </div>
+                <div class="col-xs-12 col-md-3 col-lg-3  form-group">
+                    {!! Form::label('states', trans('global.clips.fields.states').'', ['class' => 'control-label']) !!}
+                    <button type="button" class="btn btn-primary btn-xs" id="selectbtn-states">
+                        {{ trans('global.app_select_all') }}
+                    </button>
+                    <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-states">
+                        {{ trans('global.app_deselect_all') }}
+                    </button>
+                    {!! Form::select('states[]', $states, old('states'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'selectall-states' ]) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('states'))
+                        <p class="help-block">
+                            {{ $errors->first('states') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('title', trans('global.clips.fields.title').'', ['class' => 'control-label']) !!}
+                    {!! Form::text('title', old('title'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('title'))
+                        <p class="help-block">
+                            {{ $errors->first('title') }}
                         </p>
                     @endif
                 </div>
@@ -48,54 +96,8 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('industry_id', trans('global.clips.fields.industry').'', ['class' => 'control-label']) !!}
-                    {!! Form::select('industry_id', $industries, old('industry_id'), ['class' => 'form-control select2']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('industry_id'))
-                        <p class="help-block">
-                            {{ $errors->first('industry_id') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('brand_id', trans('global.clips.fields.brand').'', ['class' => 'control-label']) !!}
-                    {!! Form::select('brand_id', $brands, old('brand_id'), ['class' => 'form-control select2']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('brand_id'))
-                        <p class="help-block">
-                            {{ $errors->first('brand_id') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('states_id', trans('global.clips.fields.states').'', ['class' => 'control-label']) !!}
-                    {!! Form::select('states_id', $states, old('states_id'), ['class' => 'form-control select2']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('states_id'))
-                        <p class="help-block">
-                            {{ $errors->first('states_id') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 form-group">
-                    {!! Form::label('products_id', trans('global.clips.fields.products').'', ['class' => 'control-label']) !!}
-                    {!! Form::select('products_id', $products, old('products_id'), ['class' => 'form-control select2']) !!}
-                    <p class="help-block"></p>
-                    @if($errors->has('products_id'))
-                        <p class="help-block">
-                            {{ $errors->first('products_id') }}
-                        </p>
-                    @endif
-                </div>
-            </div>
+
+           
             <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('notes', trans('global.clips.fields.notes').'', ['class' => 'control-label']) !!}
@@ -104,6 +106,24 @@
                     @if($errors->has('notes'))
                         <p class="help-block">
                             {{ $errors->first('notes') }}
+                        </p>
+                    @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('images', trans('global.clips.fields.images').'', ['class' => 'control-label']) !!}
+                    <button type="button" class="btn btn-primary btn-xs" id="selectbtn-images">
+                        {{ trans('global.app_select_all') }}
+                    </button>
+                    <button type="button" class="btn btn-primary btn-xs" id="deselectbtn-images">
+                        {{ trans('global.app_deselect_all') }}
+                    </button>
+                    {!! Form::select('images[]', $images, old('images'), ['class' => 'form-control select2', 'multiple' => 'multiple', 'id' => 'selectall-images' ]) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('images'))
+                        <p class="help-block">
+                            {{ $errors->first('images') }}
                         </p>
                     @endif
                 </div>
@@ -130,4 +150,25 @@
         });
     </script>
 
+    <script>
+        $("#selectbtn-states").click(function(){
+            $("#selectall-states > option").prop("selected","selected");
+            $("#selectall-states").trigger("change");
+        });
+        $("#deselectbtn-states").click(function(){
+            $("#selectall-states > option").prop("selected","");
+            $("#selectall-states").trigger("change");
+        });
+    </script>
+
+    <script>
+        $("#selectbtn-images").click(function(){
+            $("#selectall-images > option").prop("selected","selected");
+            $("#selectall-images").trigger("change");
+        });
+        $("#deselectbtn-images").click(function(){
+            $("#selectall-images > option").prop("selected","");
+            $("#selectall-images").trigger("change");
+        });
+    </script>
 @stop

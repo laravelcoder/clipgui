@@ -7,16 +7,16 @@ return [
 		'users' => [		'title' => 'Users',		'fields' => [			'name' => 'Name',			'email' => 'Email',			'password' => 'Password',			'role' => 'Role',			'remember-token' => 'Remember token',		],	],
 		'clip-managment' => [		'title' => 'Clip Managment',		'fields' => [		],	],
 		'categories' => [		'title' => 'Categories',		'fields' => [		],	],
-		'clips' => [		'title' => 'Clips',		'fields' => [			'label' => 'Label',			'description' => 'Description',			'clip-upload' => 'Clip upload',			'industry' => 'Industry',			'brand' => 'Brand',			'states' => 'States',			'products' => 'Products',			'notes' => 'Notes',		],	],
+		'clips' => [		'title' => 'Clips',		'fields' => [			'title' => 'Title',			'description' => 'Description',			'clip-upload' => 'Clip upload',			'industry' => 'Industry',			'brand' => 'Brand',			'products' => 'Products',			'states' => 'States',			'notes' => 'Notes',			'images' => 'Images',		],	],
 		'video' => [		'title' => 'Video',		'fields' => [		],	],
 		'gallery' => [		'title' => 'Clip Gallery',		'fields' => [		],	],
 		'detections' => [		'title' => 'Detections',		'fields' => [		],	],
 		'single-channel' => [		'title' => 'Single Channel',		'fields' => [		],	],
 		'multi-channel' => [		'title' => 'Multi Channel',		'fields' => [		],	],
-		'clip-filters' => [		'title' => 'Clip Filters',		'fields' => [			'filter-by' => 'Filter By',			'filters' => 'Filters',		],	],
-		'states' => [		'title' => 'States',		'fields' => [			'state' => 'State',			'slug' => 'Slug',		],	],
-		'brands' => [		'title' => 'Brands',		'fields' => [			'name' => 'Name',			'slug' => 'Slug',		],	],
-		'products' => [		'title' => 'Products',		'fields' => [			'name' => 'Name',			'slug' => 'Slug',		],	],
+		'clip-filters' => [		'title' => 'Clip Filters',		'fields' => [			'filter-by' => 'Filter By',		],	],
+		'states' => [		'title' => 'States',		'fields' => [		],	],
+		'brands' => [		'title' => 'Brands',		'fields' => [			'name' => 'Name',		],	],
+		'products' => [		'title' => 'Products',		'fields' => [			'name' => 'Name',		],	],
 		'industry' => [		'title' => 'Industry',		'fields' => [			'name' => 'Name',			'slug' => 'Slug',		],	],
 		'defaults' => [		'title' => 'Defaults',		'fields' => [		],	],
 		'nuts-bolts' => [		'title' => 'Nuts & Bolts',		'fields' => [		],	],
@@ -32,6 +32,13 @@ return [
 		'all-channels' => [		'title' => 'All Channels',		'fields' => [		],	],
 		'sources-mgmt' => [		'title' => 'Sources Mgmt',		'fields' => [		],	],
 		'ftp' => [		'title' => 'FTP',		'fields' => [			'ftp-server' => 'FTP Server',			'ftp-directory' => 'Ftp Directory',			'ftp-username' => 'FTP Username',			'ftp-password' => 'FTP password',			'notes' => 'Notes',		],	],
+		'media-mgmt' => [		'title' => 'Media Mgmt',		'fields' => [		],	],
+		'images' => [		'title' => 'Images',		'fields' => [		],	],
+		'images' => [		'title' => 'Images',		'fields' => [			'image' => 'Image',		],	],
+		'videos' => [		'title' => 'Videos',		'fields' => [		],	],
+		'api' => [		'title' => 'Api',		'fields' => [		],	],
+		'states' => [		'title' => 'States',		'fields' => [			'name' => 'Name',			'country-code' => 'Country Code',			'iso-3166-2' => 'Iso 3166 2',		],	],
+		'countries' => [		'title' => 'Countries',		'fields' => [			'shortcode' => 'Shortcode',			'title' => 'Title',		],	],
 	'app_create' => 'Create',
 	'app_save' => 'Save',
 	'app_edit' => 'Edit',

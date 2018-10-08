@@ -12,4 +12,12 @@ Route::group(['prefix' => '/v1', 'namespace' => 'Api\V1', 'as' => 'api.'], funct
 
         Route::resource('industries', 'IndustriesController', ['except' => ['create', 'edit']]);
 
+        Route::resource('ftps', 'FtpsController', ['except' => ['create', 'edit']]);
+
+        Route::resource('images', 'ImagesController', ['except' => ['create', 'edit']]);
+
+        Route::resource('states', 'StatesController', ['except' => ['create', 'edit']]);
+
+        Route::resource('countries', 'CountriesController', ['except' => ['create', 'edit']]);
+
 });
